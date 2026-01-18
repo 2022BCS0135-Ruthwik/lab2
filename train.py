@@ -13,11 +13,10 @@ data = pd.read_csv("dataset/winequality-red.csv", sep=";")
 X = data.drop("quality", axis=1)
 y = data["quality"]
 
+# 🔹 Changed train/test split
 X_train, X_test, y_train, y_test = train_test_split(
-    X, y, test_size=0.2, random_state=42
+    X, y, test_size=0.3, random_state=42
 )
-
-
 
 model = Ridge(alpha=1.0)
 model.fit(X_train, y_train)
@@ -30,7 +29,6 @@ r2 = r2_score(y_test, y_pred)
 print(f"MSE: {mse}")
 print(f"R2: {r2}")
 
-#  CREATE OUTPUT DIRECTORY
 os.makedirs("outputs", exist_ok=True)
 
 joblib.dump(model, "outputs/model.pkl")
