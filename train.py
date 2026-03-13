@@ -4,8 +4,7 @@ import joblib
 import pandas as pd
 
 from sklearn.model_selection import train_test_split
-from sklearn.linear_model import Ridge
-from sklearn.preprocessing import StandardScaler
+from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_squared_error, r2_score
 
 # Load dataset
@@ -15,14 +14,11 @@ X = data.drop("quality", axis=1)
 y = data["quality"]
 
 X_train, X_test, y_train, y_test = train_test_split(
-    X, y, test_size=0.2, random_state=42
+    X, y, test_size=0.3, random_state=42
 )
-scaler = StandardScaler()
 
-X_train = scaler.fit_transform(X_train)
-X_test = scaler.transform(X_test)
 # Model
-model = Ridge(alpha=1.0)
+model = RandomForestRegressor(n_estimators=50, max_depth=10, random_state=42)
 model.fit(X_train, y_train)
 
 # Predictions
