@@ -30,7 +30,7 @@ jobs:
     - name: Write Job Summary
       run: |
         echo "## Model Evaluation" >> $GITHUB_STEP_SUMMARY
-        echo "Name: Mode Ruthwik >> $GITHUB_STEP_SUMMARY
+        echo "Name: Mode Ruthwik">> $GITHUB_STEP_SUMMARY
         echo "Roll No: 2022BCS0135" >> $GITHUB_STEP_SUMMARY
         echo "" >> $GITHUB_STEP_SUMMARY
         cat outputs/results.json >> $GITHUB_STEP_SUMMARY
